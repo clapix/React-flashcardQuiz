@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function FlashCardList() {
+export default function FlashCardList(flashcards) {
   return (
     <div>
 

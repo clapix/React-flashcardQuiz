@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
+import FlashcardList from "./FlashCardList";
 
 function App() {
+  const [flashcards, setFlashcards] = useState(SAMPLE_FLASHCARDS)
+
+
   return (
     <h1>hello</h1>
   );
@@ -17,7 +21,7 @@ const SAMPLE_FLASHCARDS = [
       "4",
       "5",
     ]
-  }
+  },
   {
     id: 2,
     question: "what is a dog?",
@@ -28,7 +32,7 @@ const SAMPLE_FLASHCARDS = [
       "an animal",
       "a plant",
     ]
-  }
+  },
   {
     id: 3,
     question: "what's the shape of the sun?",
