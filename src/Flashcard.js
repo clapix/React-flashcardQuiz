@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Flashcard({ flashcard }) {
   return (
-    <div>
+    <div> {flashcard.question}
 
     </div>
   )

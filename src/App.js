@@ -6,7 +6,7 @@ function App() {
 
 
   return (
-    <h1>hello</h1>
+    <FlashcardList flashcards={flashcards} />
   );
 }
 
@@ -15,7 +15,7 @@ const SAMPLE_FLASHCARDS = [
     id: 1,
     question: "what is 2 + 2?",
     answer: "4",
-    optons: [
+    options: [
       "2",
       "3",
       "4",
@@ -26,7 +26,7 @@ const SAMPLE_FLASHCARDS = [
     id: 2,
     question: "what is a dog?",
     answer: "an animal",
-    optons: [
+    options: [
       "an object",
       "a human being",
       "an animal",
@@ -37,7 +37,7 @@ const SAMPLE_FLASHCARDS = [
     id: 3,
     question: "what's the shape of the sun?",
     answer: "circle",
-    optons: [
+    options: [
       "rectangular",
       "circle",
       "triangle",
