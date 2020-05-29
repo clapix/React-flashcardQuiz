@@ -25,7 +25,7 @@ const SAMPLE_FLASHCARDS = [
   {
     id: 2,
     question: "what is a dog?",
-    answer: "an animal",
+    answer: "A mammal",
     options: [
       "an object",
       "a human being",
@@ -35,8 +35,8 @@ const SAMPLE_FLASHCARDS = [
   },
   {
     id: 3,
-    question: "what's the shape of the sun?",
-    answer: "circle",
+    question: "what shape is space?",
+    answer: "Universe with positive curvature",
     options: [
       "rectangular",
       "circle",
