@@ -1,0 +1,42 @@
+:root {
+  --col-01: white;
+}
+
+body {
+  margin: 0;
+  background-image: linear-gradient(90deg, #090d1d 0%, #030735 100%);
+  color: var(--col-01);
+}
+
+.container {
+  max-width: 900;
+  margin: 1rem 2rem;
+}
+
+.card-grid {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  /* align-items: flex-start; */
+  /* align-content: stretch; */
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1 fr));
+  gap: 1rem;
+}
+
+.card {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  border: 1px solid var(--col-01);
+  min-height: 200px;
+  height: auto;
+  width: 200px;
+}
+
+.card .front,
+.card .back {
+  position: absolute;
+  padding: 1rem;
+}

@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
 import FlashcardList from "./FlashCardList";
+import "./app.css"
 
 function App() {
   const [flashcards, setFlashcards] = useState(SAMPLE_FLASHCARDS)
 
 
   return (
-    <FlashcardList flashcards={flashcards} />
+    <>
+      <div className="container">
+        <FlashcardList flashcards={flashcards} />
+      </div>
+    </>
   );
 }
 
@@ -27,10 +32,10 @@ const SAMPLE_FLASHCARDS = [
     question: "what is a dog?",
     answer: "A mammal",
     options: [
-      "an object",
-      "a human being",
-      "an animal",
-      "a plant",
+      "An object",
+      "A fish",
+      "A mammal",
+      "A plant",
     ]
   },
   {
@@ -38,9 +43,9 @@ const SAMPLE_FLASHCARDS = [
     question: "what shape is space?",
     answer: "Universe with positive curvature",
     options: [
-      "rectangular",
-      "circle",
-      "triangle",
+      "Universe with positive curvature",
+      "A flat universe",
+      "Universe with negative curvature",
     ]
   }
 ]
