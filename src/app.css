@@ -24,19 +24,41 @@ body {
 }
 
 .card {
-  display: flex;
   justify-content: space-between;
   position: relative;
   cursor: pointer;
   border-radius: 0.25rem;
   border: 1px solid var(--col-01);
-  min-height: 200px;
-  height: auto;
+
   width: 200px;
+  transform-style: preserve-3d;
+  transform: rotateY(var(--rotate-y, 0)) translateY(var(--translate-y, 0));
+}
+
+.card:hover {
+  --translate-y: -2px;
+}
+
+.card.flip {
+  --rotate-y: 180deg;
 }
 
 .card .front,
 .card .back {
-  position: absolute;
+  grid-area: 1 / 1 / 2 / 2;
   padding: 1rem;
+  backface-visibility: hidden;
+}
+
+.card .back {
+  transform: rotateY(180deg);
+  position: absolute;
+  top: 15.5%;
+  left: 0%;
+  /* translate: 50%, -50%; */
+  text-align: right;
+}
+
+.flashcard-options {
+  margin-top: 2rem;
 }

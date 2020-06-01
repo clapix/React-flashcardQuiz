@@ -41,11 +41,11 @@ const SAMPLE_FLASHCARDS = [
   {
     id: 3,
     question: "what shape is space?",
-    answer: "Universe with positive curvature",
+    answer: "A universe with positive curvature",
     options: [
-      "Universe with positive curvature",
+      "A universe with positive curvature",
       "A flat universe",
-      "Universe with negative curvature",
+      "A universe with negative curvature",
     ]
   }
 ]
