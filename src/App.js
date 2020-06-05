@@ -4,25 +4,28 @@ import "./app.css";
 import axios from 'axios';
 
 function App() {
-  const [flashcards, setFlashcards] = useState()
+  const [flashcards, setFlashcards] = useState([])
 
   // https://opentdb.com/api_config.php
   useEffect(() => {
     axios
-      .get("https://opentdb.com/api.php?amount=10")
+      .get("https://opentdb.com/api.php?amount=12")
       .then(res => {
-        // console.log(res.data)
+        console.log(res.data)
         setFlashcards(res.data.results.map((questionItem, index) => {
+          const answer = questionItem.correct_answer
+          const options = [...questionItem.incorrect_answers, answer]
+
           return {
             id: `${index}-${Date.now()}`,
-            questions: "questionItem.question"
-            // answer: questionItem.correct_answer,
+            questions: "questionItem.question",
+            answer: questionItem.correct_answer,
+            options: options.sort(() => Math.random() - .5),
 
           }
         }))
       })
   }, [])
-
   return (
     <>
       <div className="container">
