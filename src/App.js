@@ -4,14 +4,22 @@ import "./app.css";
 import axios from 'axios';
 
 function App() {
-  const [flashcards, setFlashcards] = useState(SAMPLE_FLASHCARDS)
+  const [flashcards, setFlashcards] = useState()
 
   // https://opentdb.com/api_config.php
   useEffect(() => {
     axios
       .get("https://opentdb.com/api.php?amount=10")
       .then(res => {
-        console.log(res.data)
+        // console.log(res.data)
+        setFlashcards(res.data.results.map((questionItem, index) => {
+          return {
+            id: `${index}-${Date.now()}`,
+            questions: "questionItem.question"
+            // answer: questionItem.correct_answer,
+
+          }
+        }))
       })
   }, [])
 
@@ -24,39 +32,39 @@ function App() {
   );
 }
 
-const SAMPLE_FLASHCARDS = [
-  {
-    id: 1,
-    question: "what is 2 + 2?",
-    answer: "4",
-    options: [
-      "2",
-      "3",
-      "4",
-      "5",
-    ]
-  },
-  {
-    id: 2,
-    question: "what is a dog?",
-    answer: "A mammal",
-    options: [
-      "An object",
-      "A fish",
-      "A mammal",
-      "A plant",
-    ]
-  },
-  {
-    id: 3,
-    question: "what shape is space?",
-    answer: "A universe with positive curvature",
-    options: [
-      "A universe with positive curvature",
-      "A flat universe",
-      "A universe with negative curvature",
-    ]
-  }
-]
+// const SAMPLE_FLASHCARDS = [
+//   {
+//     id: 1,
+//     question: "what is 2 + 2?",
+//     answer: "4",
+//     options: [
+//       "2",
+//       "3",
+//       "4",
+//       "5",
+//     ]
+//   },
+//   {
+//     id: 2,
+//     question: "what is a dog?",
+//     answer: "A mammal",
+//     options: [
+//       "An object",
+//       "A fish",
+//       "A mammal",
+//       "A plant",
+//     ]
+//   },
+//   {
+//     id: 3,
+//     question: "what shape is space?",
+//     answer: "A universe with positive curvature",
+//     options: [
+//       "A universe with positive curvature",
+//       "A flat universe",
+//       "A universe with negative curvature",
+//     ]
+//   }
+// ]
 
 export default App;
