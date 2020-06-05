@@ -1,11 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet');
+
 :root {
   --col-01: white;
+  --col-02: #d604ee;
+  --col-03: #0000ff;
+  font-family: "Roboto", sans-serif;
 }
 
 body {
   margin: 0;
   background-image: linear-gradient(90deg, #090d1d 0%, #030735 100%);
   color: var(--col-01);
+  font-size: 0.9rem;
+  line-height: 1.3rem;
+  letter-spacing: 0.1rem;
 }
 
 .container {
@@ -16,9 +24,9 @@ body {
 .card-grid {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
-  /* align-items: flex-start; */
-  /* align-content: stretch; */
+  justify-content: space-around;
+  /* each box its own size */
+  align-items: flex-start;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1 fr));
   gap: 1rem;
 }
@@ -27,11 +35,12 @@ body {
   justify-content: space-between;
   position: relative;
   cursor: pointer;
+  margin: 1rem;
   border-radius: 0.25rem;
-  border: 1px solid var(--col-01);
-
+  border: 1px solid var(--col-02);
   width: 200px;
   transform-style: preserve-3d;
+  transition: 150ms;
   transform: rotateY(var(--rotate-y, 0)) translateY(var(--translate-y, 0));
 }
 
@@ -41,11 +50,13 @@ body {
 
 .card.flip {
   --rotate-y: 180deg;
+  border: 1px solid var(--col-03);
+  justify-items: center;
+  align-items: center;
 }
 
 .card .front,
 .card .back {
-  grid-area: 1 / 1 / 2 / 2;
   padding: 1rem;
   backface-visibility: hidden;
 }
@@ -56,9 +67,23 @@ body {
   top: 15.5%;
   left: 0%;
   /* translate: 50%, -50%; */
-  text-align: right;
+  text-align: left;
+}
+
+.card .front {
+  /* color: var(--col-02); */
 }
 
 .flashcard-options {
-  margin-top: 2rem;
+  margin-top: 1rem;
+  color: var(--col-01);
+  font-weight: 300;
+}
+
+.flashcard-option {
+  padding: 4px;
+}
+
+.flashcard-option:hover {
+  background-color: var(--col-02);
 }
