@@ -11,14 +11,27 @@ function App() {
   const categoryEl = useRef()
   const difficultyEl = useRef()
 
-  function handleSubmit(e) {
-
-  }
-
-  // https://opentdb.com/api_config.php
   useEffect(() => {
+    axios.get("https://opentdb.com/api_category.php")
+      .then(res => {
+        // console.log(res.data)
+        setCategories(res.data.trivia_categories)
+      })
+  }, [])
+
+  useEffect(() => {
+
+  }, [])
+
+  function handleSubmit(e) {
+    e.preventDefault()
     axios
-      .get("https://opentdb.com/api.php?amount=12")
+      .get("https://opentdb.com/api.php?amount=12", {
+        params: {
+          category: categoryEl.current.value,
+          difficulty: difficultyEl.current.value
+        }
+      })
       .then(res => {
         console.log(res.data)
         setFlashcards(res.data.results.map((questionItem, index) => {
@@ -34,7 +47,12 @@ function App() {
           }
         }))
       })
-  }, [])
+
+
+  }
+
+  // https://opentdb.com/api_config.php
+
   return (
     <>
       <form className="header" onSubmit={handleSubmit}>

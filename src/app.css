@@ -26,7 +26,7 @@ body {
   flex-flow: row wrap;
   justify-content: space-around;
   /* each box its own size */
-  align-items: flex-start;
+  align-items: flex-center;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1 fr));
   gap: 1rem;
 }
