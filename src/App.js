@@ -12,6 +12,7 @@ function App() {
   const difficultyEl = useRef()
 
   useEffect(() => {
+    // https://opentdb.com/api_config.php
     axios.get("https://opentdb.com/api_category.php")
       .then(res => {
         // console.log(res.data)
@@ -20,8 +21,14 @@ function App() {
   }, [])
 
   useEffect(() => {
+    axios.get("https://opentdb.com/api.php")
+      .then(res => {
+        console.log(res.data)
+        // setDifficulties(res.data.trivia_categories)
+      })
 
   }, [])
+
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -47,38 +54,39 @@ function App() {
           }
         }))
       })
-
-
   }
-
-  // https://opentdb.com/api_config.php
 
   return (
     <>
-      <form className="header" onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="category">Category</label>
-          <select id="category" ref={categoryEl}>
-            {categories.map(category => {
-              return <option value={category.id} key={category.id}>{category.name}</option>
-            })}
-          </select>
-        </div>
-        <div className="form-group">
-          <label htmlFor="difficulty">Difficulty</label>
-          <select id="difficulty" ref={difficultyEl}>
-            {difficulties.map(difficulty => {
-              return <option value={difficulty.id} key={difficulty.id}>{difficulty.name}</option>
-            })}
+      <div className="wrapper">
+        <form className="header" onSubmit={handleSubmit}>
+          <h1>Flashcard Quiz</h1>
+          <div className="form-group">
+            <div className="form-element">
+              <label htmlFor="category">Category</label>
+              <select id="category" ref={categoryEl}>
+                {categories.map(category => {
+                  return <option value={category.id} key={category.id}>{category.name}</option>
+                })}
+              </select>
+            </div>
+            <div className="form-element">
+              <label htmlFor="difficulty">Difficulty</label>
+              <select id="difficulty" ref={difficultyEl}>
+                {difficulties.map(difficulty => {
+                  return <option value={difficulty.id} key={difficulty.id}>{difficulty.name}</option>
+                })}
 
-          </select>
+              </select>
+            </div>
+            <div className="form-element">
+              <button className="btn">Generate</button>
+            </div>
+          </div>
+        </form>
+        <div className="container">
+          <FlashcardList flashcards={flashcards} />
         </div>
-        <div className="form-group">
-          <button className="btn">Generate</button>
-        </div>
-      </form>
-      <div className="container">
-        <FlashcardList flashcards={flashcards} />
       </div>
     </>
   );

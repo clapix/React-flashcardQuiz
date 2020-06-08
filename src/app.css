@@ -5,6 +5,7 @@
   --col-02: #d604ee;
   --col-03: #0000ff;
   font-family: "Roboto", sans-serif;
+  text-rendering: optimizeLegibility;
 }
 
 body {
@@ -13,29 +14,80 @@ body {
   color: var(--col-01);
   font-size: 0.9rem;
   line-height: 1.3rem;
-  letter-spacing: 0.1rem;
+  letter-spacing: 0.08wrem;
+}
+
+.wrapper {
+  max-width: 900;
+  padding: 1rem 2rem;
 }
 
 .container {
-  max-width: 900;
-  margin: 1rem 2rem;
+  margin: 1rem 0;
+}
+
+.header {
+  flex-direction: column;
+  margin: 1rem 0;
+}
+
+h1 {
+  margin: 1.3rem 0;
+}
+
+.form-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.form-element {
+  margin-top: 0.5rem;
+  margin-right: 2rem;
+}
+
+.form-element label {
+  margin-right: 1rem;
+}
+
+.form-element select {
+  color: var(--col-03);
+  padding: 0.3rem;
+  border-radius: 0.15rem;
+  border: none;
+  cursor: pointer;
+}
+
+.btn {
+  color: var(--col-01);
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  background-color: var(--col-03);
+  border: none;
+  cursor: pointer;
 }
 
 .card-grid {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-around;
+  justify-content: space-between;
   /* each box its own size */
   align-items: flex-center;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1 fr));
   gap: 1rem;
 }
 
+@media (max-width: 400px) {
+  .card-grid {
+    justify-content: center;
+  }
+}
+
 .card {
   justify-content: space-between;
   position: relative;
   cursor: pointer;
-  margin: 1rem;
+  margin: 1rem 0rem;
   border-radius: 0.25rem;
   border: 1px solid var(--col-02);
   width: 200px;
@@ -64,8 +116,8 @@ body {
 .card .back {
   transform: rotateY(180deg);
   position: absolute;
-  top: 15.5%;
-  left: 0%;
+  top: 0%;
+  left: -5%;
   /* translate: 50%, -50%; */
   text-align: left;
 }
@@ -86,4 +138,24 @@ body {
 
 .flashcard-option:hover {
   background-color: var(--col-02);
+}
+
+.correct {
+  display: inline-block;
+  background-color: green;
+  padding: 0px 10px;
+}
+
+.invisible {
+  display: none;
+}
+
+.answer-container {
+  display: flex;
+  flex-direction: column;
+  padding-top: 2rem;
+  width: 184px;
+  height: 120px;
+  align-items: center;
+  justify-content: center;
 }
