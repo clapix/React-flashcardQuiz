@@ -2,8 +2,6 @@ import React, { useState, useRef } from 'react'
 
 export default function Flashcard({ flashcard }) {
   const [flip, setFlip] = useState(false)
-  const [correct, setCorrect] = useState(false)
-  // const [correctAnswer, setCorrectAnswer] = useState(0)
 
   const frontEl = useRef()
   const backEl = useRef()

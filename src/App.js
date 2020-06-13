@@ -11,12 +11,23 @@ function App() {
 
   useEffect(() => {
     // https://opentdb.com/api_config.php
-    axios.get("https://opentdb.com/api_category.php")
+    axios
+      .get("https://opentdb.com/api_category.php")
       .then(res => {
         // console.log(res.data)
         setCategories(res.data.trivia_categories)
       })
   }, [])
+
+  useEffect(() => {
+
+  }, [])
+
+  function decodeString(str) {
+    const textArea = document.createElement('textarea')
+    textArea.innerHTML = str
+    return textArea.value
+  }
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -27,13 +38,16 @@ function App() {
         }
       })
       .then(res => {
-        console.log(res.data)
+        // console.log(res.data)
         setFlashcards(res.data.results.map((questionItem, index) => {
-          const answer = questionItem.correct_answer
-          const options = [...questionItem.incorrect_answers, answer]
+          const answer = decodeString(questionItem.correct_answer)
+          const options = [
+            ...questionItem.incorrect_answers.map(a => decodeString(a)),
+            answer
+          ]
           return {
             id: `${index}-${Date.now()}`,
-            question: questionItem.question,
+            question: decodeString(questionItem.question),
             answer: questionItem.correct_answer,
             options: options.sort(() => Math.random() - .5),
           }
