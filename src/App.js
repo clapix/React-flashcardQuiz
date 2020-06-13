@@ -6,10 +6,8 @@ import axios from 'axios';
 function App() {
   const [flashcards, setFlashcards] = useState([])
   const [categories, setCategories] = useState([])
-  const [difficulties, setDifficulties] = useState([])
 
   const categoryEl = useRef()
-  const difficultyEl = useRef()
 
   useEffect(() => {
     // https://opentdb.com/api_config.php
@@ -20,23 +18,12 @@ function App() {
       })
   }, [])
 
-  useEffect(() => {
-    axios.get("https://opentdb.com/api.php")
-      .then(res => {
-        console.log(res.data)
-        // setDifficulties(res.data.trivia_categories)
-      })
-
-  }, [])
-
-
   function handleSubmit(e) {
     e.preventDefault()
     axios
       .get("https://opentdb.com/api.php?amount=12", {
         params: {
-          category: categoryEl.current.value,
-          difficulty: difficultyEl.current.value
+          category: categoryEl.current.value
         }
       })
       .then(res => {
@@ -44,13 +31,11 @@ function App() {
         setFlashcards(res.data.results.map((questionItem, index) => {
           const answer = questionItem.correct_answer
           const options = [...questionItem.incorrect_answers, answer]
-
           return {
             id: `${index}-${Date.now()}`,
             question: questionItem.question,
             answer: questionItem.correct_answer,
             options: options.sort(() => Math.random() - .5),
-
           }
         }))
       })
@@ -68,15 +53,6 @@ function App() {
                 {categories.map(category => {
                   return <option value={category.id} key={category.id}>{category.name}</option>
                 })}
-              </select>
-            </div>
-            <div className="form-element">
-              <label htmlFor="difficulty">Difficulty</label>
-              <select id="difficulty" ref={difficultyEl}>
-                {difficulties.map(difficulty => {
-                  return <option value={difficulty.id} key={difficulty.id}>{difficulty.name}</option>
-                })}
-
               </select>
             </div>
             <div className="form-element">

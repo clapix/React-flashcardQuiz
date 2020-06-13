@@ -122,10 +122,6 @@ h1 {
   text-align: left;
 }
 
-.card .front {
-  /* color: var(--col-02); */
-}
-
 .flashcard-options {
   margin-top: 1rem;
   color: var(--col-01);
@@ -138,12 +134,6 @@ h1 {
 
 .flashcard-option:hover {
   background-color: var(--col-02);
-}
-
-.correct {
-  display: inline-block;
-  background-color: green;
-  padding: 0px 10px;
 }
 
 .invisible {
